@@ -577,7 +577,7 @@ leaveFaceTest = function(v, e, skelVtxs, oldSkels, oldInfs) {
 var convert, replaceVertex;
 
 convert = function(skelEdges, skelVtxs, infEdges, gVtxs, gEdges, perps, infPerps, quasiSkelVtxs, quasiGraphVtxs) {
-  var BL, BR, TL, TR, aa, ab, ac, allVtxs, bVertex, bottom, boundaryEdges, boundaryPerps, boundarySkels, boundaryVtxs, cen, closestEdge, d, distance, e, edge, edges, edgesWithoutComp, i, j, k, l, left, len, len1, len10, len11, len12, len13, len14, len15, len16, len17, len18, len2, len3, len4, len5, len6, len7, len8, len9, m, maxCoordX, maxCoordY, minCoordX, minCoordY, n, o, p, q, quasiGraphVtxsOnly, quasiSkelVtxsOnly, r, ray, right, s, t, tmpCPV, tmpE, top, u, v, vWithComp, vert, vertices, verticesWithComp, w, x, y, z;
+  var BL, BR, TL, TR, allVtxs, bVertex, bottom, boundaryEdges, boundaryPerps, boundarySkels, boundaryVtxs, cen, closestEdge, d, distance, e, edge, edges, edgesWithoutComp, i, i1, j, j1, k, k1, l, left, len, len1, len10, len11, len12, len13, len14, len15, len16, len17, len18, len2, len3, len4, len5, len6, len7, len8, len9, m, maxCoordX, maxCoordY, minCoordX, minCoordY, n, o, p, q, quasiGraphVtxsOnly, quasiSkelVtxsOnly, r, ray, right, s, t, tmpCPV, tmpE, top, u, v, vWithComp, vert, vertices, verticesWithComp, w, x, y, z;
   maxCoordX = canvas.width;
   maxCoordY = canvas.height;
   minCoordX = 0;
@@ -732,17 +732,17 @@ convert = function(skelEdges, skelVtxs, infEdges, gVtxs, gEdges, perps, infPerps
     tmpCPV = new CreasePatternVertex(vert.x, vert.y, "boundarySkel");
     replaceVertex(vert, tmpCPV, edgesWithoutComp, perps, vertices);
   }
-  for (aa = 0, len16 = perps.length; aa < len16; aa++) {
-    edge = perps[aa];
+  for (i1 = 0, len16 = perps.length; i1 < len16; i1++) {
+    edge = perps[i1];
     tmpE = new CreasePatternEdge(edge[0].endpt1, edge[0].endpt2, "perp", edge[1]);
     edges.push(tmpE);
   }
-  for (ab = 0, len17 = skelEdges.length; ab < len17; ab++) {
-    edge = skelEdges[ab];
+  for (j1 = 0, len17 = skelEdges.length; j1 < len17; j1++) {
+    edge = skelEdges[j1];
     edges.push(new CreasePatternEdge(edge.endpt1, edge.endpt2, "skeleton"));
   }
-  for (ac = 0, len18 = boundaryEdges.length; ac < len18; ac++) {
-    edge = boundaryEdges[ac];
+  for (k1 = 0, len18 = boundaryEdges.length; k1 < len18; k1++) {
+    edge = boundaryEdges[k1];
     edges.push(new CreasePatternEdge(edge.endpt1, edge.endpt2, "boundary"));
   }
   cen = TL.plus(BR).times(0.5);
@@ -776,7 +776,7 @@ var edgeHandle, edgeTwoC, edgeTwoD, edgeTwoE, edgeTwoF,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 edgeHandle = function(mySLAV, pq, I, processed, skelEdges, skelVtxs, infEdges) {
-  var N, e, endpt1, endpt2, error1, i, j, len, len1, ref, ref1, v, x, y;
+  var N, e, endpt1, endpt2, i, j, len, len1, ref, ref1, v, x, y;
   if ((ref = I[2], indexOf.call(processed, ref) >= 0) || (ref1 = I[3], indexOf.call(processed, ref1) >= 0)) {
     return;
   }
@@ -1221,7 +1221,7 @@ var splitHandle, splitTwoD, splitTwoE, splitTwoF,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 splitHandle = function(mySLAV, pq, I, processed, skelEdges, skelVtxs, infEdges) {
-  var N, N1, N2, Nc, dirSeg, error1, i, len, node, ref, ref1, ref2;
+  var N, N1, N2, Nc, dirSeg, i, len, node, ref, ref1, ref2;
   if (ref = I[2], indexOf.call(processed, ref) >= 0) {
     return;
   }
@@ -2659,10 +2659,13 @@ drawCPEdge = function(edge, show) {
   ctx.lineTo(endpt2.x, c - endpt2.y - b);
   if (edge.assignment === "m") {
     ctx.strokeStyle = "red";
+    ctx.setLineDash([15, 3, 3, 3]);
   } else {
     if (edge.assignment === "v") {
       ctx.strokeStyle = "blue";
+      ctx.setLineDash([10, 10]);
     } else {
+      ctx.setLineDash([]);
       if (edge.assignment === "u") {
         ctx.strokeStyle = "purple";
       } else {

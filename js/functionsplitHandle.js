@@ -2,7 +2,7 @@ var splitHandle, splitTwoD, splitTwoE, splitTwoF,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 splitHandle = function(mySLAV, pq, I, processed, skelEdges, skelVtxs, infEdges) {
-  var N, N1, N2, Nc, dirSeg, error1, i, len, node, ref, ref1, ref2;
+  var N, N1, N2, Nc, dirSeg, i, len, node, ref, ref1, ref2;
   if (ref = I[2], indexOf.call(processed, ref) >= 0) {
     return;
   }

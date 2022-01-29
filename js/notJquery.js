@@ -83,10 +83,13 @@ drawCPEdge = function(edge, show) {
   ctx.lineTo(endpt2.x, c - endpt2.y - b);
   if (edge.assignment === "m") {
     ctx.strokeStyle = "red";
+    ctx.setLineDash([15, 3, 3, 3]);
   } else {
     if (edge.assignment === "v") {
       ctx.strokeStyle = "blue";
+      ctx.setLineDash([10, 10]);
     } else {
+      ctx.setLineDash([]);
       if (edge.assignment === "u") {
         ctx.strokeStyle = "purple";
       } else {

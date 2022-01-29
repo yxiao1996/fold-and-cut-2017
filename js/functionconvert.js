@@ -1,7 +1,7 @@
 var convert, replaceVertex;
 
 convert = function(skelEdges, skelVtxs, infEdges, gVtxs, gEdges, perps, infPerps, quasiSkelVtxs, quasiGraphVtxs) {
-  var BL, BR, TL, TR, aa, ab, ac, allVtxs, bVertex, bottom, boundaryEdges, boundaryPerps, boundarySkels, boundaryVtxs, cen, closestEdge, d, distance, e, edge, edges, edgesWithoutComp, i, j, k, l, left, len, len1, len10, len11, len12, len13, len14, len15, len16, len17, len18, len2, len3, len4, len5, len6, len7, len8, len9, m, maxCoordX, maxCoordY, minCoordX, minCoordY, n, o, p, q, quasiGraphVtxsOnly, quasiSkelVtxsOnly, r, ray, right, s, t, tmpCPV, tmpE, top, u, v, vWithComp, vert, vertices, verticesWithComp, w, x, y, z;
+  var BL, BR, TL, TR, allVtxs, bVertex, bottom, boundaryEdges, boundaryPerps, boundarySkels, boundaryVtxs, cen, closestEdge, d, distance, e, edge, edges, edgesWithoutComp, i, i1, j, j1, k, k1, l, left, len, len1, len10, len11, len12, len13, len14, len15, len16, len17, len18, len2, len3, len4, len5, len6, len7, len8, len9, m, maxCoordX, maxCoordY, minCoordX, minCoordY, n, o, p, q, quasiGraphVtxsOnly, quasiSkelVtxsOnly, r, ray, right, s, t, tmpCPV, tmpE, top, u, v, vWithComp, vert, vertices, verticesWithComp, w, x, y, z;
   maxCoordX = canvas.width;
   maxCoordY = canvas.height;
   minCoordX = 0;
@@ -156,17 +156,17 @@ convert = function(skelEdges, skelVtxs, infEdges, gVtxs, gEdges, perps, infPerps
     tmpCPV = new CreasePatternVertex(vert.x, vert.y, "boundarySkel");
     replaceVertex(vert, tmpCPV, edgesWithoutComp, perps, vertices);
   }
-  for (aa = 0, len16 = perps.length; aa < len16; aa++) {
-    edge = perps[aa];
+  for (i1 = 0, len16 = perps.length; i1 < len16; i1++) {
+    edge = perps[i1];
     tmpE = new CreasePatternEdge(edge[0].endpt1, edge[0].endpt2, "perp", edge[1]);
     edges.push(tmpE);
   }
-  for (ab = 0, len17 = skelEdges.length; ab < len17; ab++) {
-    edge = skelEdges[ab];
+  for (j1 = 0, len17 = skelEdges.length; j1 < len17; j1++) {
+    edge = skelEdges[j1];
     edges.push(new CreasePatternEdge(edge.endpt1, edge.endpt2, "skeleton"));
   }
-  for (ac = 0, len18 = boundaryEdges.length; ac < len18; ac++) {
-    edge = boundaryEdges[ac];
+  for (k1 = 0, len18 = boundaryEdges.length; k1 < len18; k1++) {
+    edge = boundaryEdges[k1];
     edges.push(new CreasePatternEdge(edge.endpt1, edge.endpt2, "boundary"));
   }
   cen = TL.plus(BR).times(0.5);

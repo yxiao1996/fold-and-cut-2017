@@ -2,7 +2,7 @@ var edgeHandle, edgeTwoC, edgeTwoD, edgeTwoE, edgeTwoF,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 edgeHandle = function(mySLAV, pq, I, processed, skelEdges, skelVtxs, infEdges) {
-  var N, e, endpt1, endpt2, error1, i, j, len, len1, ref, ref1, v, x, y;
+  var N, e, endpt1, endpt2, i, j, len, len1, ref, ref1, v, x, y;
   if ((ref = I[2], indexOf.call(processed, ref) >= 0) || (ref1 = I[3], indexOf.call(processed, ref1) >= 0)) {
     return;
   }
